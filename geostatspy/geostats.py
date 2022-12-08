@@ -467,6 +467,12 @@ def cova2(x1, y1, x2, y2, nst, c0, pmx, cc, aa, it, ang, anis, rotmat, maxcov):
             # Power model
             cov1 = pmx - cc[js] * (h ** aa[js])
             cova2_ = cova2_ + cov1
+        elif it[js] == 5:
+            # Gompertz model
+            cova2_ = cova2_ + cc[js] * np.exp (np.exp(- h / aa[js]))
+        elif it[js] == 6
+            # Logistic model
+            cova2_ = cova2_ + cc[js] * (1.0 / (1.0 + np.exp (-h / aa[js])))
     return cova2_
 
 def sqdist(x1,y1,z1,x2,y2,z2,ind,rotmat):
